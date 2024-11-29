@@ -22,10 +22,13 @@ class AmusementPark:
             print('initialize locations will be later')
 
         
-    def add(self, *args, **kwargs)->None:
+    def add(self, name: str, *args, **kwargs)->None:
         '''add location to park'''
         if len(self.locations) == max_locations:
             raise RuntimeError("AmusementPark is full, cannot add new location")
+
+        self.locations[name] = Location()  #todo add object creation later
+        
 
     def remove(self, id: str)->None:
         '''delete location from park'''
