@@ -3,6 +3,7 @@
 # Description: Класс для управления локацией с товарами.
 
 from location import Location
+from goods import Goods
 import unittest
 
 
@@ -64,8 +65,31 @@ class TestLocationCreation(unittest.TestCase):
 
 
 
-# Пример использования
 if __name__ == '__main__':
+    # # Создаем локацию с товарами
+    # shop = LocationWithGoods('Магазин сувениров', 'Рядом с выходом')
+
+    # # Создаем товары
+    # magnet = Goods(name="Магнит", price=50, expiration_date="2025-01-01", description="Сувенирный магнит")
+    # t_shirt = Goods(name="Футболка", price=500, expiration_date="2025-01-01", description="Футболка с логотипом парка")
+
+    # # Добавляем товары в магазин
+    # shop.add_good(magnet)
+    # shop.add_good(t_shirt)
+
+    # # Добавляем акцию на футболку
+    # shop.add_promotion("Футболка", "Скидка 10% на покупку футболки в комплекте с магнитом!")
+
+    # # Выводим список товаров
+    # print("\nСписок товаров:")
+    # for good, promotion in shop.get_goods():
+    #     print(f"{good} - {promotion}")
+
+    # # Покупка товара
+    # print("\nПокупка товара:")
+    # print(magnet.buy(3))  # Покупаем 3 магнита
+    # print(t_shirt.buy(1))  # Покупаем 1 футболку
+
 
 
     
