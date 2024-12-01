@@ -1,5 +1,9 @@
+# Author: Лейман М.А.
+# Date: 2024-12-01
+# Description: Класс для управления локацией с товарами.
 
 from location import Location
+import unittest
 
 
 class LocationWithGoods(Location):
@@ -39,14 +43,40 @@ class LocationWithGoods(Location):
 
 
 
+class TestLocationCreation(unittest.TestCase):
+    def test_location_creation(self):
+        loc = Location("Большая карусель", "У озера", opening_hours=(10, 20), description="Самая большая карусель")
+        self.assertEqual(loc.name, "Большая карусель")
+        self.assertEqual(loc.address, "У озера")
+        self.assertEqual(loc.opening_hours, (10, 20))
+        self.assertEqual(loc.description, "Самая большая карусель")
+        self.assertTrue(loc.active)
+
+    def test_location_with_goods_creation(self):
+        loc_with_goods = LocationWithGoods("Магазин сувениров", "Рядом с выходом")
+        self.assertEqual(loc_with_goods.name, "Магазин сувениров")
+        self.assertEqual(loc_with_goods.address, "Рядом с выходом")
+        self.assertListEqual(loc_with_goods.goods, [])
+        self.assertDictEqual(loc_with_goods.promotions, {})
+
+
+
+
+
 
 # Пример использования
 if __name__ == '__main__':
 
-    # Добавляем товары
-    # food_court.add_good(Goods(name="Хот-дог", price=150, expiration_date="2024-12-01"))
-    # food_court.add_good(Goods(name="Кофе", price=100, expiration_date="2024-12-01"))
-    # shop.add_good(Goods(name="Магнит", price=50, expiration_date="2025-01-01"))
-    # shop.add_good(Goods(name="Футболка", price=500, expiration_date="2025-01-01"))
 
+    
+    print("Creating Location...")
+    loc = Location('Большая карусель', 'У озера', opening_hours=(10, 20), description='Самая большая карусель')
+    print(f"Location created: {loc.name}, {loc.address}, {loc.opening_hours}, {loc.description}, Active: {loc.active}")
 
+    print("\nCreating LocationWithGoods...")
+    loc_with_goods = LocationWithGoods('Магазин сувениров', 'Рядом с выходом')
+    print(f"LocationWithGoods created: {loc_with_goods.name}, {loc_with_goods.address}")
+    print(f"Goods: {loc_with_goods.goods}, Promotions: {loc_with_goods.promotions}")
+    
+    
+    unittest.main()
