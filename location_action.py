@@ -10,7 +10,6 @@ class Location_Action(Location):
                  ):
         super().__init__(name=name, address=address, opening_hours=opening_hours, description=description, active=active)
         self.__actions = {} # словарь действий
-        self.__is_one_action = False  # флаг того, что в локации возможно только одно действие
         self.__number_of_seats = number_of_seats # количество мест для посетитителей на один сеанс
         self.__free_seats = number_of_seats  # количество свободных мест
         
@@ -25,15 +24,10 @@ class Location_Action(Location):
     @property
     def actions(self):
         return self.__actions
-
         
     def add_action(self, name:str, *args, **kwargs):
         '''добавляет действие в локацию'''
-        if self.__is_one_action and len(self.__actions.keys()) > 0:
-            raise ValueError(f"Локация '{self.name} может содержать только одно действие")
-        
         self.__actions[name] = Action(name, *args, **kwargs)
-
 
     def remove_action(self, name: str):
         '''удаляет действие из локации'''
