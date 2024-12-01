@@ -48,3 +48,32 @@ def test_Action_reset_free_seats():
     assert loc.free_seats == 0
     loc.reset_free_seats()
     assert loc.free_seats == TOTAL_SEATS
+
+def test_add_action():
+    loc = create_test_location()
+    loc.add_action(name='Представление 1', duration=10, min_age=5, max_age=15)
+    loc.add_action(name='Представление 2', duration=12, min_age=4, max_age=11)
+
+    assert len(loc.actions.keys()) == 2
+    act = loc.actions['Представление 1']
+    assert act.duration == 10
+    assert act.min_age == 5
+    assert act.max_age == 15
+    
+    act = loc.actions['Представление 2']
+    assert act.duration == 12
+    assert act.min_age == 4
+    assert act.max_age == 11    
+    
+def test_remove_action():
+    loc = create_test_location()
+    loc.add_action(name='Представление 1', duration=10, min_age=5, max_age=15)
+    loc.add_action(name='Представление 2', duration=12, min_age=4, max_age=11)
+
+    assert len(loc.actions.keys()) == 2
+    loc.remove_action('Представление 1')
+    assert len(loc.actions.keys()) == 1
+    assert loc.actions['Представление 2'] is not None
+
+    loc.remove_action('Представление 1')
+    assert len(loc.actions.keys()) == 1

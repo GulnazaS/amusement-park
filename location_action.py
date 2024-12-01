@@ -23,7 +23,7 @@ class Location_Action(Location):
         return self.__free_seats
         
     @property
-    def action(self):
+    def actions(self):
         return self.__actions
 
         
@@ -32,7 +32,7 @@ class Location_Action(Location):
         if self.__is_one_action and len(self.__actions.keys()) > 0:
             raise ValueError(f"Локация '{self.name} может содержать только одно действие")
         
-        self.action[name] = Action(name, *args, **kwargs)
+        self.__actions[name] = Action(name, *args, **kwargs)
 
 
     def remove_action(self, name: str):
