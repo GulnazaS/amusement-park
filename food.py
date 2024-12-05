@@ -32,26 +32,28 @@ class Food(Goods):
         """
         Возвращает строковое представление товара.
         """
-        return f"Товар: {self.name},
+        return f'''Товар: {self.name},
                 Цена: {self.price},
                 Срок годности: {self.expiration_date}, 
                 Состав товара: {self.product_composition},
                 Вес: {self.weight},
-                Пищевая ценность: {self.nutrition_val}"
+                Пищевая ценность: {self.nutrition_val}'''
 
     def __repr__(self):
         """
         Возвращает строковое представление объекта для разработчиков.
         """
-        return f"Food(name={self.name!r}, 
+        return f'''Food(name={self.name!r}, 
                 price={self.price}, 
                 expiration_date={self.expiration_date!r}, 
                 product_composition={self.product_composition!r},
                 weight ={self.weight!r}, 
-                nutrition_val={self.nutrition_val!r})"
+                nutrition_val={self.nutrition_val!r})'''
 
     def __hash__(self):
         """
         Возвращает хэш для объекта, чтобы его можно было использовать в словарях.
         """
         return hash((self.name, self.price, self.expiration_date, self.product_composition,self.weight, self.nutrition_val))
+
+

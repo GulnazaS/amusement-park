@@ -4,21 +4,28 @@ class Cafe(FoodCourt):
     """
     Класс Кафе, наследующийся от FoodCourt.
     """
-    def __init__(self, name):
-        self.name = name
-        self.menu = {}
+    def __init__(self, cuisine:str, type_: str, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._cuisine = cuisine  
+        self._cafe_type = type_ 
     
-    def add_item(self, item_name, price):
-        """Добавляет новый пункт в меню."""
-        self.menu[item_name] = price
+    @property
+    def cuisine(self):
+        return self._cuisine
     
-    def remove_item(self, item_name):
-        """Удаляет пункт из меню."""
-        if item_name in self.menu:
-            del self.menu[item_name]
-        else:
-            print(f"Item {item_name} not found on the menu.")
-            
-    def get_menu(self):
-        """Возвращает текущее меню."""
-        return self.menu
+    @property
+    def cafe_type(self):
+        return self._cafe_type
+    
+
+if __name__ == '__main__':
+    cafe = Cafe(
+        "Восточная кухня",
+        "Ресторан высокой кухни",
+        "Гурман Парк",
+        "Улица Вкуса, 10",
+        ("10:00", "22:00"),
+        "Лучшие блюда со всего мира.")
+    
+
+    print(cafe.cuisine, cafe.cafe_type, sep = ',')
