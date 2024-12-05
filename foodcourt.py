@@ -10,16 +10,15 @@ class FoodCourt(LocationWithGoods):
     """
     Класс Фудкорта, наследующийся от LocationWithGoods.
     """
-    def __init__(self, *args, **kwargs):
+    def __init__(self, name: str, address: str, opening_hours: tuple = (), description: str = '', active: bool = True):
         """
         Инициализация объекта фудкорта.
-        :param foodcourt_name: Название объекта фудкорта.
         :param name: Имя локации (например, название зоны или аттракциона).
         :param address: Адрес заведения.
         :param opening_hours: Часы работы заведения.
         :param description: Описание заведения.
         """
-        super().__init__(*args, **kwargs)
+        super().__init__(name=name, address=address, opening_hours=opening_hours, description=description, active=active)
 
     def place_order(self, food: str, quantity: int) -> float:
         """Размещает заказ """

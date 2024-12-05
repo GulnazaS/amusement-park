@@ -5,33 +5,37 @@ class Bakery(FoodCourt):
     Класс Кондитерской, наследующийся от FoodCourt. Отличается специальным дессертом
     """
 
-    def __init__(self, special:str, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self._special_dessert = special  
-        self.best_sellers = set()  # Лучшие продавцы
+    def __init__(self, name: str, address: str, opening_hours: tuple = (), description: str = '', active: bool = True):
+        super().__init__(name=name, address=address, opening_hours=opening_hours, description=description, active=active)
+        self._main_desert = None
 
     @property
     def main_dessert(self):
         '''Главный дессерт заведения'''
-        return self._special_dessert
+        return self._main_desert
+    
+    def add_good(self, good, is_main_dessert = False):
+        super().add_good(good)
+        # если это главный десерт - запомнить его
+        if is_main_dessert:
+           self._main_desert = good
+
 
 
 if __name__ == "__main__":
 
-    bakery = Bakery(
-        'Торт Медовик',
-        "Гурман Парк",
-        address="Улица Вкуса, 10",
-        opening_hours=("10:00", "22:00"),
-        description="Лучшие блюда со всего мира.",
+    bakery1 = Bakery(
+        name = "Выпечка",
+        address = "Улица Вкуса, 10",
+        opening_hours = ("10:00", "22:00"),
+        description = "Лучшие десерты."
     )
 
-    # Добавляем пункты в меню
-    bakery.add_item("Торт 'Медовик'", 15.00)
-    bakery.add_item("Круассан", 2.50)
-    bakery.add_item("Пирожное 'Эклер'", 3.00)
+    from food import Food
+    
+    bakery1.add_good(Food('Круасан', 4.5, 'Завтра', weight=1500))
+    bakery1.add_good(Food('Пончик', 3.20, 'Завтра', weight=300), is_main_dessert = True)
+    
 
-
-    # Получаем обновленное меню
-    print("Меню:", bakery.menu)
-    print("Супер дессерт:", bakery.main_dessert)
+    print("Супер дессерт:", bakery1.main_dessert)
+    

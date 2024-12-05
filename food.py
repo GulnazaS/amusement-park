@@ -7,6 +7,7 @@ class Food(Goods):
                  name: str,
                  price: float,
                  expiration_date: str,
+                 description: str = '',
                  product_composition: str = '',
                  weight: int = 0,
                  nutrition_val : str = ''):
@@ -15,18 +16,18 @@ class Food(Goods):
         :param name: Название товара.
         :param price: Цена товара.
         :param expiration_date: Срок годности товара в формате "YYYY-MM-DD".
+        :param description: Описание товара (опционально).
+        
         :param product_composition: Состав товара (опционально).
         :param nutrition_val: Пищевая ценность товара (опционально).
         :param weight: Вес товара (опционально).
         """
+        super().__init__(name=name, price=price, expiration_date=expiration_date, description=description)
         if price <= 0:
             raise ValueError("Цена должна быть положительным числом")
-        self.name = name
-        self.price = price
-        self.expiration_date = expiration_date
-        product_composition = product_composition
-        weight = weight
-        nutrition_val = nutrition_val
+        self.product_composition = product_composition
+        self.weight = weight
+        self.nutrition_val = nutrition_val
 
     def __str__(self):
         """
