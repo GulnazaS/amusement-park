@@ -23,3 +23,4 @@
 # Схема архитектуры
 ![Лабораторная работа drawio](https://github.com/user-attachments/assets/6ad69ac9-617f-4bfe-b56c-edff110630fe)
 
+https://drive.google.com/file/d/1Z3Dj6LyxMb6NXhs81XX7jx_xMAxqnNbc/view
